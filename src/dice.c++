@@ -1,14 +1,13 @@
+#include "dice.h++"
 #include <cstdlib>
-#include <ctime>
 
-void startDice() {
-    std::srand(std::time(0));
-}
-
-int die6() {
-  return (std::rand() % 6) + 1;
-}
-
-int die4() {
-  return (std::rand() % 4) + 1;
+// Roll the dice
+int Dice::Roll() {
+  int result = 0;
+  // Roll the dice once for each die in the object
+  // and sum the results
+  for (int ii = 0; ii < number; ii++) {
+    result += (std::rand() % sides) + 1;
+  }
+  return result;
 }

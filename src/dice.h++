@@ -1,10 +1,23 @@
 #ifndef DICE_H
 #define DICE_H
 
-void startDice();
+// A number of dice, all with the same number of sides
+class Dice {
+private:
+  int sides;			// number of sides per die
+  int number;			// number of dice
 
-int die6();
+  Dice() {}			// No default die
 
-int die4();
+public:
+  Dice(int s, int n) : sides(s), number(n) {}	// Construct a number of dice with sides
+
+  int Roll();		// Roll the dice
+
+  int GetSides() { return sides; }
+  int GetNumber() { return number; }
+
+};
+
 
 #endif
