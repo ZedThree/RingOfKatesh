@@ -2,7 +2,7 @@
 #include <cstdlib>
 
 // Roll the dice
-int Dice::Roll() {
+int Dice::roll() {
   int result = 0;
   // Roll the dice once for each die in the object
   // and sum the results

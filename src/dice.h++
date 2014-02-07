@@ -7,17 +7,15 @@ private:
   int sides;			// number of sides per die
   int number;			// number of dice
 
-  Dice() {}			// No default die
-
 public:
+  Dice() : sides(0), number(0) {}		//
   Dice(int s, int n) : sides(s), number(n) {}	// Construct a number of dice with sides
 
-  int Roll();		// Roll the dice
+  int roll();		// Roll the dice
 
-  int GetSides() { return sides; }
-  int GetNumber() { return number; }
+  int getSides() { return sides; }
+  int getNumber() { return number; }
 
 };
-
 
 #endif
