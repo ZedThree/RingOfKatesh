@@ -21,3 +21,32 @@ int Dice::roll() {
   }
   return result;
 }
+
+// Roll the dice and print the results
+int Dice::printRoll() {
+  int total_result = 0;
+  int* result = new int[number];
+
+  int pause;
+  for (int ii = 1; ii < 60; ii++) {
+    std::cout << "\r";
+
+    for (int die = 0; die < number; die++) {
+      result[die] = (std::rand() % sides) + 1;
+      std::cout << " " << result[die] ;
+    }
+    std::cout.flush();
+
+    pause = 50 * ii * ii;
+    usleep(pause);
+  }
+  std::cout << "\n";
+
+  for (int die = 0; die < number; die++) {
+    total_result += result[die];
+  }
+
+  delete[] result;
+
+  return total_result;
+}

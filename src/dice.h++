@@ -15,6 +15,7 @@ public:
   Dice(int s, int n) : sides(s), number(n), name(setName()) {}	// Construct a number of dice with sides
 
   int roll();		// Roll the dice
+  int printRoll();	// Roll the dice and print the result to screen
 
   int getSides()	{ return sides;  }
   int getNumber()	{ return number; }
