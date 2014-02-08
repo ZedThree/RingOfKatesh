@@ -1,5 +1,15 @@
 #include "dice.h++"
 #include <cstdlib>
+#include <unistd.h>		// for usleep
+#include <iostream>
+#include <string>
+
+// Set the name of the dice, e.g. 2d6
+std::string Dice::setName() {
+  std::string n = std::to_string(number);
+  std::string s = std::to_string(sides);
+  return n + "d" + s;
+}
 
 // Roll the dice
 int Dice::roll() {
