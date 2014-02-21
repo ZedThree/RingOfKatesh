@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 
+#define NUM_ROLLS 60		// how many times to roll the dice
+
 // Set the name of the dice, e.g. 2d6
 std::string Dice::setName() {
   std::string n = std::to_string(number);
@@ -28,7 +30,7 @@ int Dice::printRoll() {
   int* result = new int[number];
 
   int pause;
-  for (int ii = 1; ii < 60; ii++) {
+  for (int ii = 1; ii < NUM_ROLLS; ii++) {
     std::cout << "\r";
 
     for (int die = 0; die < number; die++) {
