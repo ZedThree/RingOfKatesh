@@ -41,3 +41,11 @@ void Creature::takeDamage(int damage) {
     // kill();
   }
 }
+
+// Heal the creature, up to maxhp
+void Creature::heal(int healing) {
+  hp += healing;
+  if (hp > maxhp) {
+    hp = maxhp;
+  }
+}
