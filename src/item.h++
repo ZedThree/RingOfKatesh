@@ -15,6 +15,8 @@ public:
   Item(std::string n, std::string d) :
     name(n), description(d) {}
 
+  virtual ~Item() {}
+
   // getters
   std::string getName() { return name; }
   std::string getDescription() { return description; }

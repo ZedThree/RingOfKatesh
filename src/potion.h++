@@ -11,7 +11,7 @@ private:
 
 public:
   Potion() : Item("Potion", "A healing potion. Heals 5hp") {}
-
+  virtual ~Potion() {}
   void use(Creature& creature); 	// use the potion on creature
 
 };
