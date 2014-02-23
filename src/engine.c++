@@ -43,8 +43,6 @@ void Engine::play() {
   bool moves;
   // The iterator for the list of enemies
   std::vector<Creature>::iterator current_enemy;
-  // Are there any enemies still alive?
-  bool any_enemies_alive = false;
 
   // main loop
   do {
@@ -84,9 +82,6 @@ void Engine::play() {
       }
     } while (moves);
 
-    // We check in the enemy loop if any are alive
-    any_enemies_alive = false;
-
     // Loop over the enemies and attack the player
     current_enemy = enemy_list.begin();
     while (current_enemy != enemy_list.end() ) {
@@ -95,8 +90,6 @@ void Engine::play() {
 	enemy_list.erase(current_enemy);
 	continue;
       }
-      // If it's not dead, there's at least one enemy alive
-      any_enemies_alive = true;
 
       std::string enemy_name = current_enemy->getName();
       std::cout << "\nNow it's the " << enemy_name <<"'s turn!\n";
@@ -108,7 +101,7 @@ void Engine::play() {
       current_enemy++;
     }
 
-  } while (player.isAlive() && any_enemies_alive );
+  } while (player.isAlive() && enemy_list.size()>0 );
 
   if (player.isAlive()) {
     std::cout << "You won!\n";
