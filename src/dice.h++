@@ -12,6 +12,7 @@ private:
 
 public:
   Dice() : sides(0), number(0), name(setName()) {}		//
+  Dice(int s) : sides(s), number(1), name(setName()) {}		// Construct a single die with sides
   Dice(int s, int n) : sides(s), number(n), name(setName()) {}	// Construct a number of dice with sides
 
   int roll();		// Roll the dice
