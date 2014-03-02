@@ -1,6 +1,7 @@
 #include "engine.h++"
 #include "dice.h++"
 #include "creature.h++"
+#include "creature_types.h++"
 #include "potion.h++"
 #include <iostream>
 #include <string>
@@ -13,9 +14,8 @@ void Engine::start() {
   // start in the first room of the map
 
   // Make some enemies - this will be moved out to the starting room
-  Creature kobold("kobold", 4, Dice(4, 3), Dice(4, 2));
-  Creature rat("rat", 4, Dice(4, 1), Dice(4, 1));
-  // Add them to the list of enemies
+  Kobold kobold;
+  Rat rat;
   enemy_list.push_back(kobold);
   enemy_list.push_back(rat);
 
