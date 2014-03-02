@@ -1,11 +1,4 @@
 #include "engine.h++"
-#include "dice.h++"
-#include "creature.h++"
-#include "creature_types.h++"
-#include "potion.h++"
-#include <iostream>
-#include <string>
-#include <vector>
 
 void Engine::start() {
 

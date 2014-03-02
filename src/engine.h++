@@ -1,12 +1,13 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
-#include <string>
 #include "creature.h++"
+#include "creature_types.h++"
+#include "dice.h++"
 #include "potion.h++"
-#include <cstdlib>
-#include <ctime>
 #include "room.h++"
+#include <iostream>
+#include <string>
 #include <vector>
 
 class Engine {
