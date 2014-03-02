@@ -89,6 +89,10 @@ void Engine::play() {
       current_enemy->attack(player);
       std::cout << "Your health: " << player.getHp() << std::endl;
 
+      if ( !player.isAlive() ) {
+	break;
+      }
+
       // Next enemy
       current_enemy++;
     }
