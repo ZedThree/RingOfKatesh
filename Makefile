@@ -7,7 +7,7 @@ CC=g++
 
 CFLAGS = --std=c++11 -Wall
 
-FILES = dice.c++ creature.c++ potion.c++ engine.c++ ring.c++
+FILES = dice.c++ creature.c++ potion.c++ room.c++ engine.c++ ring.c++
 FILELIST = $(addprefix $(SRCPATH)/,$(FILES))
 
 all:
