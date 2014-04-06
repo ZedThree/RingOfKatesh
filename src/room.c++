@@ -9,7 +9,7 @@ void Room::enter() {
   std::cout << "There are " << enemies.size() << " enemies here:\n";
 
   // The iterator for the list of enemies
-  std::vector<Creature>::iterator current_enemy;
+  enemy_iterator current_enemy;
 
   // Iterate over list of enemies and announce their starting health
   current_enemy = enemies.begin();
