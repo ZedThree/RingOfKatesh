@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 
-#define NUM_ROLLS 60		// how many times to roll the dice
+#define NUM_ROLLS 40		// how many times to roll the dice
 
 // Set the name of the dice, e.g. 2d6
 std::string Dice::setName() {
