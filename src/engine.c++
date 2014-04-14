@@ -37,7 +37,10 @@ void Engine::start() {
 
 void Engine::play() {
 
-  // main loop
+  // Some initial set-up
+  start();
+
+  // Main loop
   do {
 
     playerTurn();
