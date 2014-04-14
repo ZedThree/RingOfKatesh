@@ -49,16 +49,15 @@ void Engine::playerTurn() {
   Room::enemy_iterator current_enemy;
 
   do {
-    std::cout << "\nWhat do you want to do?\n";
-    std::cout << "Attack, potion or quit?\n> ";
+    std::cout << "\nWhat do you want to do? [Type (h)elp for options]\n> ";
     std::getline(std::cin, choice);
 
-    if (choice == "quit") {
+    if (choice == "quit" || choice == "q") {
       running = false;
       std::cout << "You cowardly run away\n";
       return;
 
-    } else if (choice == "attack") {
+    } else if (choice == "attack" || choice == "a") {
 
       // For now, can only attack the first enemy in the list
       current_enemy = room->firstEnemy();
@@ -80,6 +79,15 @@ void Engine::playerTurn() {
       } else {
 	std::cout << "Sorry, you have no more potions!\n";
       }
+
+    } else if (choice == "help" || choice == "h") {
+
+      std::cout << "Things you can do: (a)ttack, (q)uit or potion\n";
+
+    } else {
+
+      std::cout << "I'm not sure how to do that. Maybe try again? Type (h)elp for some help.\n";
+
     }
   } while (moves);
 
