@@ -40,6 +40,8 @@ public:
   // Getters and setters
   void killEnemy( enemy_iterator enemy ) { enemies.erase(enemy); }
 
+  int enemiesLeft() { return enemies.size(); }
+
 };
 
 #endif

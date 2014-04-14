@@ -27,9 +27,6 @@ int main() {
   // Create a new engine with the room to start in
   Engine engine(&room1);
 
-  // Some initial set up
-  engine.start();
-
   // Play the game!
   engine.play();
 
