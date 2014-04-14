@@ -45,9 +45,13 @@ void Engine::play() {
 
     playerTurn();
 
+    if (!isRunning()) {
+      return;
+    }
+
     enemyTurn();
 
-  } while (player.isAlive() && enemy_list.size()>0 );
+  } while (isRunning() && player.isAlive() && enemy_list.size()>0 );
 
   if (player.isAlive()) {
     std::cout << "You won!\n";
@@ -74,7 +78,7 @@ void Engine::playerTurn() {
     std::getline(std::cin, choice);
 
     if (choice == "quit") {
-
+      running = false;
       std::cout << "You cowardly run away\n";
       return;
 

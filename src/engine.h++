@@ -10,6 +10,7 @@
 
 class Engine {
 private:
+  bool running;
   Creature player;
   Potion* potion = new Potion;
 
@@ -17,7 +18,8 @@ private:
   std::vector<Creature> enemy_list;
 
 public:
-  Engine() : player("player", 10, Dice(6, 2), Dice(6, 2)) {}
+  Engine() : running(true),
+	     player("player", 10, Dice(6, 2), Dice(6, 2)) {}
 
   void start();
 
@@ -28,6 +30,8 @@ public:
   void enemyTurn();
 
   // void quit();
+
+  bool isRunning() { return running; }
 
 };
 
