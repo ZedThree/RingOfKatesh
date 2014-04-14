@@ -23,6 +23,10 @@ public:
 
   void play();
 
+  void playerTurn();
+
+  void enemyTurn();
+
   // void quit();
 
 };
