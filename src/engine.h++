@@ -4,6 +4,7 @@
 #include "creature.h++"
 #include "creature_types.h++"
 #include "dice.h++"
+#include "player.h++"
 #include "potion.h++"
 #include "room.h++"
 #include <iostream>
@@ -13,13 +14,13 @@
 class Engine {
 private:
   bool running;
-  Creature player;
+  Player player;
   Potion* potion = new Potion;
   Room* room;
 
 public:
   Engine(Room* start_room) : running(true),
-			     player("player", 10, Dice(6, 2), Dice(6, 2)),
+			     player(),
 			     room(start_room) {}
 
   void start();
@@ -29,6 +30,8 @@ public:
   void playerTurn();
 
   void enemyTurn();
+
+  void movePlayer(std::string direction);
 
   // void quit();
 

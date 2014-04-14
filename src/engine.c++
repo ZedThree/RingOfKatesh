@@ -1,5 +1,6 @@
 #include "engine.h++"
 #include "room.h++"
+#include <array>
 
 void Engine::start() {
 
@@ -80,9 +81,22 @@ void Engine::playerTurn() {
 	std::cout << "Sorry, you have no more potions!\n";
       }
 
+    } else if (
+	       choice == "north" || choice == "n" ||
+	       choice == "east"  || choice == "e" ||
+	       choice == "south" || choice == "s" ||
+	       choice == "west"  || choice == "w"
+	       ) {
+      std::cout << "Not yet implemented, but you can try it...\n";
+
+      std::cout << "Before: ";
+      std::cout << player.getPosition()[0] << player.getPosition()[1] << std::endl;
+      movePlayer(choice);
+      std::cout << "After: ";
+      std::cout << player.getPosition()[0] << player.getPosition()[1] << std::endl;
     } else if (choice == "help" || choice == "h") {
 
-      std::cout << "Things you can do: (a)ttack, (q)uit or potion\n";
+      std::cout << "Things you can do: (n)orth, (e)ast, (s)outh, (w)est, (a)ttack, (q)uit or potion\n";
 
     } else {
 
@@ -118,5 +132,33 @@ void Engine::enemyTurn() {
 
     // Next enemy
     current_enemy++;
+  }
+}
+
+// Move player to a new position
+void Engine::movePlayer(std::string direction) {
+
+  std::array<int,2> player_pos = player.getPosition();
+
+  if (direction == "north" || direction == "n") {
+
+    player_pos[1]++;
+    player.move(player_pos);
+
+  } else if (direction == "east"  || direction == "e") {
+
+    player_pos[0]++;
+    player.move(player_pos);
+
+  } else if (direction == "south" || direction == "s") {
+
+    player_pos[1]--;
+    player.move(player_pos);
+
+  } else if (direction == "west"  || direction == "w") {
+
+    player_pos[0]--;
+    player.move(player_pos);
+
   }
 }
