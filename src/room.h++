@@ -22,9 +22,11 @@ private:
 
 public:
 
-  Room() {}
+  Room();
   Room(std::string n, std::string desc, creature_list e) :
-    name(n), description(desc), enemies(e) {}
+    name(n),
+    description(desc),
+    enemies(e) {}
 
   // Iterators so the engine can access the list of creatures in the room
   typedef creature_list::iterator enemy_iterator;

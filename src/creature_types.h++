@@ -9,11 +9,13 @@
 class Kobold : public Creature {
 public:
   Kobold() : Creature("kobold", 2 + Dice(6).roll(), Dice(4, 3), Dice(4, 2)) {}
+  static const int ENCOUNTER_CHANCE = 14;
 };
 
 class Rat : public Creature {
 public:
   Rat() : Creature("rat", 1 + Dice(4).roll(), Dice(4), Dice(4)) {};
+  static const int ENCOUNTER_CHANCE = 9;
 };
 
 #endif
