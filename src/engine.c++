@@ -8,6 +8,12 @@ void Engine::start() {
 
   std::cout << "\nYour start health: " << player.getHp() << "\n\n";
 
+  // Get player coordinates
+  std::array<int,2> coords;
+  coords = player.getPosition();
+
+  room = dungeon.getRoom(coords);
+
   // Enter the first room
   room->enter();
 }
@@ -94,6 +100,9 @@ void Engine::playerTurn() {
       movePlayer(choice);
       std::cout << "After: ";
       std::cout << player.getPosition()[0] << player.getPosition()[1] << std::endl;
+      room = dungeon.getRoom(player.getPosition());
+      room->enter();
+
     } else if (choice == "help" || choice == "h") {
 
       std::cout << "Things you can do: (n)orth, (e)ast, (s)outh, (w)est, (a)ttack, (q)uit or potion\n";

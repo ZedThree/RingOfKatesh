@@ -11,7 +11,7 @@ CFLAGS = --std=c++11 -Wall -pipe
 
 SRC_EXT = c++
 
-FILES = dice.c++ creature.c++ potion.c++ room.c++ engine.c++ ring.c++
+FILES = dice.c++ dungeon.c++ creature.c++ potion.c++ room.c++ engine.c++ ring.c++
 # FILES = $(shell find $(SRCPATH)/ -name '*.$(SRC_EXT)')
 
 FILELIST = $(addprefix $(SRCPATH)/,$(FILES))

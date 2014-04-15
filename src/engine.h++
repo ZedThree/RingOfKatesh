@@ -4,6 +4,7 @@
 #include "creature.h++"
 #include "creature_types.h++"
 #include "dice.h++"
+#include "dungeon.h++"
 #include "player.h++"
 #include "potion.h++"
 #include "room.h++"
@@ -17,11 +18,13 @@ private:
   Player player;
   Potion* potion = new Potion;
   Room* room;
+  Dungeon dungeon;
 
 public:
-  Engine(Room* start_room) : running(true),
-			     player(),
-			     room(start_room) {}
+  Engine() : running(true),
+	     player(),
+	     dungeon() {}
+	     // room(start_room) {}
 
   void start();
 
