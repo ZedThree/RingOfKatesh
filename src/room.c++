@@ -1,4 +1,29 @@
 #include "room.h++"
+#include "dice.h++"
+#include "creature.h++"
+#include "creature_types.h++"
+
+// Randomly generate a new room
+Room::Room() {
+
+  name = "A randomly generated room";
+
+  description = "A small, dim and damp cave. A few flickering candle stumps provide the only light";
+
+  Dice d20(20);
+
+  // Random encounters
+  if (d20.roll() > Kobold::ENCOUNTER_CHANCE) {
+    enemies.push_back(Kobold());
+  }
+  if (d20.roll() > Rat::ENCOUNTER_CHANCE) {
+    // Rats come in groups
+    for (int ii = 0; ii < Dice(4).roll(); ++ii) {
+      enemies.push_back(Rat());
+    }
+  }
+
+}
 
 void Room::enter() {
 
