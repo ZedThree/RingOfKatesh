@@ -1,4 +1,5 @@
 #include "engine.h++"
+#include "enums.h++"
 #include "room.h++"
 #include <array>
 
@@ -93,15 +94,36 @@ void Engine::playerTurn() {
 	       choice == "south" || choice == "s" ||
 	       choice == "west"  || choice == "w"
 	       ) {
-      std::cout << "Not yet implemented, but you can try it...\n";
+      // Well, this is awful. There must be a nicer way to turn
+      // a string into an enum.
+      // Maybe shift all this into a parser on choice?
+      global_enums::Directions direction;
+      if (choice == "north" || choice == "n") {
+	direction = global_enums::NORTH;
+      } else if (choice == "east"  || choice == "e") {
+	direction = global_enums::EAST;
+      } else if (choice == "south" || choice == "s") {
+	direction = global_enums::SOUTH;
+      } else if (choice == "west"  || choice == "w") {
+	direction = global_enums::WEST;
+      }
 
-      std::cout << "Before: ";
-      std::cout << player.getPosition()[0] << player.getPosition()[1] << std::endl;
-      movePlayer(choice);
-      std::cout << "After: ";
-      std::cout << player.getPosition()[0] << player.getPosition()[1] << std::endl;
-      room = dungeon.getRoom(player.getPosition());
-      room->enter();
+      if (dungeon.movePossible(player.getPosition(), direction)) {
+	movePlayer(choice);
+	int x = player.getPosition()[0];
+	int y = player.getPosition()[1];
+	std::cout << "You are now at: (" << x << "," << y << ")\n";
+
+	room = dungeon.getRoom(player.getPosition());
+	room->enter();
+
+	// Need some logic to skip enemy's turn if we've just moved
+	// to a room
+	// moves = false;
+      } else {
+	std::cout << "Sorry, that way is not possible\n" ;
+      }
+
 
     } else if (choice == "help" || choice == "h") {
 
