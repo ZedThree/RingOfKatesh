@@ -68,12 +68,16 @@ void Engine::playerTurn() {
     } else if (choice == "attack" || choice == "a") {
 
       // For now, can only attack the first enemy in the list
-      current_enemy = room->firstEnemy();
-      std::string enemy_name = current_enemy->getName();
-      std::cout << "You attack the " << enemy_name << "\n";
-      player.attack(*current_enemy);
-      std::cout << enemy_name << " health: " << current_enemy->getHp() << std::endl;
-      moves = false;
+      if (room->enemiesLeft()) {
+	current_enemy = room->firstEnemy();
+	std::string enemy_name = current_enemy->getName();
+	std::cout << "You attack the " << enemy_name << "\n";
+	player.attack(*current_enemy);
+	std::cout << enemy_name << " health: " << current_enemy->getHp() << std::endl;
+	moves = false;
+      } else {
+	std::cout << "You swing at the air wildly. Good work.\n";
+      }
 
     } else if (choice == "potion") {
 
