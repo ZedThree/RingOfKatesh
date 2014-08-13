@@ -2,9 +2,19 @@
 #define DUNGEON_H
 
 #include "enums.h++"
+#include "exits.h++"
 #include "room.h++"
-#include "boost/multi_array.hpp"
+#include <boost/multi_array.hpp>
 #include <array>
+#include <map>
+#include <string>
+
+enum class Directions {
+  NORTH = 0,
+  EAST,
+  SOUTH,
+  WEST,
+};
 
 class Dungeon {
 private:
@@ -18,6 +28,14 @@ private:
   // The array of rooms
   dungeon_type map;
 
+  // Coordinates of the starting room
+  coords start_room;
+
+  // Characters for printing map
+  std::map<Exits, std::string> room_chars;
+
+  // Pick a direction - used in generating a dungeon
+  int pickDir() { return (std::rand() % 5) + 1; }
 public:
   Dungeon();
 
@@ -26,6 +44,11 @@ public:
 
   // Return a pointer to the room at position
   Room* getRoom(coords position);
+
+  // Print the dungeon to screen
+  void printDungeon();
+  // Version with the player position blinking
+  void printDungeon(coords player_pos);
 
 };
 

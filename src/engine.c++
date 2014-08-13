@@ -128,16 +128,19 @@ void Engine::playerTurn() {
 	std::cout << "Sorry, that way is not possible\n" ;
       }
 
-
     } else if (choice == "look" || choice == "l") {
 
       // This currently just prints a description of room and
       // what enemies are there.
       room->enter();
 
+    } else if (choice == "map" || choice == "m") {
+
+      dungeon.printDungeon(player.getPosition());
+
     } else if (choice == "help" || choice == "h") {
 
-      std::cout << "Things you can do: (n)orth, (e)ast, (s)outh, (w)est, (a)ttack, (l)ook, (q)uit or potion\n";
+      std::cout << "Things you can do: (n)orth, (e)ast, (s)outh, (w)est, (a)ttack, (l)ook, (m)ap, (q)uit or potion\n";
 
     } else {
 

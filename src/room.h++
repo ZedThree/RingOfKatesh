@@ -2,6 +2,7 @@
 #define ROOM_H
 
 #include "creature.h++"
+#include "exits.h++"
 #include <iostream>
 #include <vector>
 #include <string>
@@ -9,10 +10,6 @@
 class Room {
 private:
   typedef std::vector<Creature> creature_list;
-  // Room* north;
-  // Room* east;
-  // Room* south;
-  // Room* west;
 
   std::string name;		// Name of the room
   std::string description;	// Brief description of the room
@@ -21,12 +18,14 @@ private:
   creature_list enemies;
 
 public:
+  Exits doors;
 
   Room();
-  Room(std::string n, std::string desc, creature_list e) :
+  Room(std::string n, std::string desc, creature_list e, Exits d) :
     name(n),
     description(desc),
-    enemies(e) {}
+    enemies(e),
+    doors(d) {}
 
   // Iterators so the engine can access the list of creatures in the room
   typedef creature_list::iterator enemy_iterator;

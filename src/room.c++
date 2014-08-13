@@ -6,6 +6,8 @@
 // Randomly generate a new room
 Room::Room() {
 
+  doors = Exits(0,0,0,0);
+
   name = "A randomly generated room";
 
   description = "A small, dim and damp cave. A few flickering candle stumps provide the only light";
