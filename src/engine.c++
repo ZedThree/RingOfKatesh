@@ -35,7 +35,7 @@ void Engine::play() {
 
     enemyTurn();
 
-  } while (isRunning() && player.isAlive() && room->enemiesLeft()>0 );
+  } while (isRunning() && player.isAlive());
 
   if (player.isAlive()) {
     std::cout << "You won!\n";
