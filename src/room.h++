@@ -3,6 +3,7 @@
 
 #include "creature.h++"
 #include "exits.h++"
+#include "player.h++"
 #include <iostream>
 #include <vector>
 #include <string>
@@ -34,8 +35,9 @@ public:
 
   // void exit(Room direction);
 
-  void enter();			// Things to do when entering a room
+  void enter(Player& player);	// Things to do when entering a room
 
+  void printDescription();	// Print a description of the room
   void printEnemies();		// Print out the list of enemies
 
   // Getters and setters

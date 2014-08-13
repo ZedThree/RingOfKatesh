@@ -27,12 +27,24 @@ Room::Room() {
 
 }
 
-void Room::enter() {
+void Room::enter(Player& player) {
 
-  // Print the description of the room
+  // Add this room to the player's map
+  player.updateMap(doors);
+
+  // Give a description of the room and the enemies in it
+  printDescription();
+  printEnemies();
+
+}
+
+// Print the description of the room
+void Room::printDescription() {
   std::cout << description << std::endl;
+}
 
-  // Print a list of the enemies here
+// Print a list of the enemies here
+void Room::printEnemies() {
   std::cout << "There are " << enemies.size() << " enemies here:\n";
 
   // The iterator for the list of enemies
@@ -46,5 +58,4 @@ void Room::enter() {
     std::cout << enemy_announcement << current_enemy->getHp() << "\n";
     current_enemy++;
   }
-
 }

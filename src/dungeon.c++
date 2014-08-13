@@ -1,14 +1,5 @@
 #include "dungeon.h++"
 
-inline bool operator< (const Exits& lhs, const Exits& rhs) {
-  return (lhs.value < rhs.value);
-
-};
-
-inline bool operator> (const Exits& lhs, const Exits& rhs) {
-  return operator<(rhs, lhs);
-};
-
 Dungeon::Dungeon() {
   map.resize(boost::extents[DUNGEON_DIMS][DUNGEON_DIMS]);
 

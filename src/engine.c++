@@ -16,7 +16,7 @@ void Engine::start() {
   room = dungeon.getRoom(coords);
 
   // Enter the first room
-  room->enter();
+  room->enter(player);
 }
 
 void Engine::play() {
@@ -119,7 +119,7 @@ void Engine::playerTurn() {
 	std::cout << "You are now at: (" << x << "," << y << ")\n";
 
 	room = dungeon.getRoom(player.getPosition());
-	room->enter();
+	room->enter(player);
 
 	// Need some logic to skip enemy's turn if we've just moved
 	// to a room
@@ -132,11 +132,11 @@ void Engine::playerTurn() {
 
       // This currently just prints a description of room and
       // what enemies are there.
-      room->enter();
+      room->enter(player);
 
     } else if (choice == "map" || choice == "m") {
 
-      dungeon.printDungeon(player.getPosition());
+      player.printMap();
 
     } else if (choice == "help" || choice == "h") {
 

@@ -50,6 +50,9 @@ public:
   // Version with the player position blinking
   void printDungeon(coords player_pos);
 
+  // Get the x-coordinate of the starting room
+  // -- we always start at y=0
+  int getStartRoom() { return start_room[0]; }
 };
 
 #endif

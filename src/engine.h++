@@ -15,16 +15,15 @@
 class Engine {
 private:
   bool running;
+  Dungeon dungeon;
   Player player;
   Potion* potion = new Potion;
   Room* room;
-  Dungeon dungeon;
 
 public:
   Engine() : running(true),
-	     player(),
-	     dungeon() {}
-	     // room(start_room) {}
+	     dungeon(),
+	     player(dungeon.getStartRoom()) {}
 
   void start();
 
