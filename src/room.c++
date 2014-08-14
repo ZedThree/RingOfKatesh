@@ -43,29 +43,16 @@ void Room::printDescription() {
   std::cout << description << std::endl;
 
   std::string directions = "";
-  int count = 0;
 
-  if (doors.getNorth()) {
-    ++count;
-    directions += " north";
-  }
-  if (doors.getEast()) {
-    ++count;
-    directions += " east";
-  }
-  if (doors.getSouth()) {
-    ++count;
-    directions += " south";
-  }
-  if (doors.getWest()) {
-    ++count;
-    directions += " west";
-  }
+  directions += doors.getNorth()? " north": "";
+  directions += doors.getEast() ? " east" : "";
+  directions += doors.getSouth()? " south": "";
+  directions += doors.getWest() ? " west" : "";
 
-  if (count == 1) {
+  if (doors.getNumExits() == 1) {
     std::cout << "There is an exit to the:" << directions;
     std::cout << std::endl;
-  } else if (count > 1) {
+  } else if (doors.getNumExits() > 1) {
     std::cout << "There are exits to the:" << directions;
     std::cout << std::endl;
   } else {
