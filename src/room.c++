@@ -41,6 +41,37 @@ void Room::enter(Player& player) {
 // Print the description of the room
 void Room::printDescription() {
   std::cout << description << std::endl;
+
+  std::string directions = "";
+  int count = 0;
+
+  if (doors.getNorth()) {
+    ++count;
+    directions += " north";
+  }
+  if (doors.getEast()) {
+    ++count;
+    directions += " east";
+  }
+  if (doors.getSouth()) {
+    ++count;
+    directions += " south";
+  }
+  if (doors.getWest()) {
+    ++count;
+    directions += " west";
+  }
+
+  if (count == 1) {
+    std::cout << "There is an exit to the:" << directions;
+    std::cout << std::endl;
+  } else if (count > 1) {
+    std::cout << "There are exits to the:" << directions;
+    std::cout << std::endl;
+  } else {
+    // How did you get here?!
+    std::cout  << "There are no exits here...\n";
+  }
 }
 
 // Print a list of the enemies here
