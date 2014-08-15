@@ -3,6 +3,7 @@
 
 #include "enums.h++"
 #include "exits.h++"
+#include "globals.h++"
 #include "room.h++"
 #include <boost/multi_array.hpp>
 #include <array>
@@ -18,12 +19,9 @@ enum class Directions {
 
 class Dungeon {
 private:
-  // Size of the dungeon
-  int DUNGEON_DIMS = 3;
-
+  // Array of rooms
   typedef boost::multi_array<Room, 2> dungeon_type;
   typedef dungeon_type::index index;
-  typedef std::array<int,2> coords;
 
   // The array of rooms
   dungeon_type map;

@@ -43,7 +43,9 @@ void Room::printDescription() {
   std::cout << description << std::endl;
 
   std::string directions = "";
-
+  // Need something clever to format this nicely, with
+  // commas and "and".
+  // Format builder?
   directions += doors.getNorth()? " north": "";
   directions += doors.getEast() ? " east" : "";
   directions += doors.getSouth()? " south": "";

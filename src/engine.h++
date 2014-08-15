@@ -5,9 +5,12 @@
 #include "creature_types.h++"
 #include "dice.h++"
 #include "dungeon.h++"
+#include "enums.h++"
+#include "globals.h++"
 #include "player.h++"
 #include "potion.h++"
 #include "room.h++"
+#include <array>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -33,7 +36,7 @@ public:
 
   void enemyTurn();
 
-  void movePlayer(std::string direction);
+  void movePlayer(global_enums::Directions direction);
 
   // void quit();
 

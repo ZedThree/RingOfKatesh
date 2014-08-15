@@ -3,6 +3,7 @@
 
 #include "creature.h++"
 #include "exits.h++"
+#include "globals.h++"
 #include "item.h++"
 #include <array>
 #include <boost/multi_array.hpp>
@@ -11,14 +12,9 @@
 
 class Player : public Creature {
 private:
-  // Size of the dungeon
-  // This has to be the same as that in dungeon.h++...
-  // Should be moved to an options file?
-  int DUNGEON_DIMS = 3;
-
+  // Array of room exits for map
   typedef boost::multi_array<Exits, 2> map_type;
   typedef map_type::index index;
-  typedef std::array<int,2> coords;
 
   // Map of explored rooms
   map_type map;
