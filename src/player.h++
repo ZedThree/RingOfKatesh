@@ -9,6 +9,7 @@
 #include <boost/multi_array.hpp>
 #include <map>
 #include <string>
+#include <vector>
 
 class Player : public Creature {
 private:
@@ -44,6 +45,14 @@ public:
 
   // Update the player's map with the current room
   void updateMap(Exits doors);
+
+  // List inventory contents
+  void printInventory();
+  // Add item to inventory
+  void takeItem(Item item);
+  // Remove item from inventory
+  // Probably want to give it *to* something
+  void giveItem(Item item);
 
 };
 

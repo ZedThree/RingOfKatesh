@@ -43,3 +43,13 @@ void Player::updateMap(Exits doors) {
   Coords pos = getPosition();
   map[pos[0]][pos[1]] = doors;
 }
+
+// void Player::printInventory() {
+//   Inventory::iterator current_item;
+
+//   for (current_item = inventory.begin();
+//        current_item != inventory.end();
+//        ++current_item) {
+//     std::cout << current_item->getName() << "\n";
+//   }
+// }

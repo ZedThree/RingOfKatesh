@@ -10,7 +10,7 @@ private:
   const int healing = 5;
 
 public:
-  Potion() : Item("Potion", "A healing potion. Heals 5hp") {}
+  Potion(int num) : Item("Potion", "A healing potion. Heals 5hp", num) {}
   virtual ~Potion() {}
   void use(Creature& creature); 	// use the potion on creature
 

@@ -6,4 +6,5 @@
 void Potion::use(Creature& creature) {
   creature.heal(healing);
   std::cout << "The " << creature.getName() << " heals " << healing << "hp\n";
+  removeItem(1);
 }

@@ -46,6 +46,9 @@ void Creature::takeDamage(int damage) {
 void Creature::heal(int healing) {
   hp += healing;
   if (hp > maxhp) {
+    // healing -= hp-maxhp;
     hp = maxhp;
   }
+  // Return actual amount healed!
+  // return healing;
 }

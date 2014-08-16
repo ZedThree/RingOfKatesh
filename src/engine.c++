@@ -75,10 +75,13 @@ void Engine::playerTurn() {
     } else if (choice == "potion") {
 
       if (potion) {
-	std::cout << "You use a potion (you have 1)\n";
+	std::cout << "You use a potion (you have "
+		  << potion->getNumber()-1 << " left)\n";
 	potion->use(player);
-	delete potion;
-	potion = nullptr;
+	if (potion->getNumber() <= 0) {
+	  delete potion;
+	  potion = nullptr;
+	}
 	std::cout << "Your health: " << player.getHp() << std::endl;
 	moves = false;
       } else {
@@ -123,6 +126,10 @@ void Engine::playerTurn() {
     } else if (choice == "map" || choice == "m") {
 
       player.printMap();
+
+    } else if (choice == "inventory" || choice == "i") {
+
+      // player.printInventory();
 
     } else if (choice == "help" || choice == "h") {
 

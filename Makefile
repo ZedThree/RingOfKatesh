@@ -12,6 +12,7 @@ CFLAGS = --std=c++11 -Wall -pipe
 SRC_EXT = c++
 
 FILES = dice.c++\
+	item.c++\
 	exits.c++\
 	dungeon.c++\
 	creature.c++\
