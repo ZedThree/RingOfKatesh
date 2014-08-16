@@ -4,7 +4,7 @@
 #include <array>
 
 // Type for coordinates in dungeon/player map
-typedef std::array<int,2> coords;
+typedef std::array<int,2> Coords;
 
 // Size of the dungeon
 // Make this into an argument to the dungeon/player?

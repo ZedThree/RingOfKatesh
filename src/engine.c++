@@ -47,7 +47,7 @@ void Engine::playerTurn() {
   // Does the player have any moves?
   bool moves = true;
   // The iterator for the list of enemies
-  Room::enemy_iterator current_enemy;
+  Room::EnemyIterator current_enemy;
 
   do {
     std::cout << "\nWhat do you want to do? [Type (h)elp for options]\n> ";
@@ -139,7 +139,7 @@ void Engine::playerTurn() {
 
 void Engine::enemyTurn() {
   // The iterator for the list of enemies
-  Room::enemy_iterator current_enemy;
+  Room::EnemyIterator current_enemy;
 
   // Loop over the enemies and attack the player
   current_enemy = room->firstEnemy();

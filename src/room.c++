@@ -68,7 +68,7 @@ void Room::printEnemies() {
   std::cout << "There are " << enemies.size() << " enemies here:\n";
 
   // The iterator for the list of enemies
-  enemy_iterator current_enemy;
+  EnemyIterator current_enemy;
 
   // Iterate over list of enemies and announce their starting health
   current_enemy = enemies.begin();

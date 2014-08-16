@@ -114,7 +114,7 @@ Dungeon::Dungeon() {
 }
 
 // Check whether it's possible to move in direction from position
-bool Dungeon::movePossible(coords position,
+bool Dungeon::movePossible(Coords position,
 			   global_enums::Directions direction) {
 
   int x = position[0];
@@ -134,13 +134,13 @@ bool Dungeon::movePossible(coords position,
 }
 
 // Return a pointer to the room at position
-Room* Dungeon::getRoom(coords position) {
+Room* Dungeon::getRoom(Coords position) {
   return &map[position[0]][position[1]];
 }
 
 // Print out the dungeon, with the current player
 // position blinking
-void Dungeon::printDungeon(coords player_pos) {
+void Dungeon::printDungeon(Coords player_pos) {
 
   room_chars.insert(std::make_pair(Exits(0,0,0,0), "?"));
   room_chars.insert(std::make_pair(Exits(0,0,0,1), "╕"));

@@ -13,14 +13,13 @@
 class Player : public Creature {
 private:
   // Array of room exits for map
-  typedef boost::multi_array<Exits, 2> map_type;
-  typedef map_type::index index;
+  typedef boost::multi_array<Exits, 2> MapType;
 
   // Map of explored rooms
-  map_type map;
+  MapType map;
 
   // Coordinates in the map
-  coords position;
+  Coords position;
 
   // Characters for printing map
   std::map<Exits, std::string> room_chars;
@@ -36,9 +35,9 @@ public:
 	      Exits(0,0,0,0));
 }
 
-  coords getPosition() { return position; }
+  Coords getPosition() { return position; }
 
-  void move(coords new_position ) { position = new_position; }
+  void move(Coords new_position ) { position = new_position; }
 
   // Print the player's map
   void printMap();

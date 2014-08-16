@@ -23,7 +23,7 @@ void Player::printMap() {
 
   std::cout << "\n";
 
-  coords player_pos = getPosition();
+  Coords player_pos = getPosition();
 
   for (int y = DUNGEON_DIMS-1; y >= 0; y--) {
     for (int x = 0; x < DUNGEON_DIMS; ++x) {
@@ -40,6 +40,6 @@ void Player::printMap() {
 }
 
 void Player::updateMap(Exits doors) {
-  coords pos = getPosition();
+  Coords pos = getPosition();
   map[pos[0]][pos[1]] = doors;
 }

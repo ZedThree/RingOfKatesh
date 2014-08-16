@@ -27,7 +27,7 @@ private:
   dungeon_type map;
 
   // Coordinates of the starting room
-  coords start_room;
+  Coords start_room;
 
   // Characters for printing map
   std::map<Exits, std::string> room_chars;
@@ -38,15 +38,15 @@ public:
   Dungeon();
 
   // Check whether it's possible to move in direction from position
-  bool movePossible(coords position, global_enums::Directions direction);
+  bool movePossible(Coords position, global_enums::Directions direction);
 
   // Return a pointer to the room at position
-  Room* getRoom(coords position);
+  Room* getRoom(Coords position);
 
   // Print the dungeon to screen
   void printDungeon();
   // Version with the player position blinking
-  void printDungeon(coords player_pos);
+  void printDungeon(Coords player_pos);
 
   // Get the x-coordinate of the starting room
   // -- we always start at y=0
