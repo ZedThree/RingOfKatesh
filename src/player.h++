@@ -5,6 +5,7 @@
 #include "exits.h++"
 #include "globals.h++"
 #include "item.h++"
+#include "inventory.h++"
 #include <array>
 #include <boost/multi_array.hpp>
 #include <map>
@@ -26,6 +27,8 @@ private:
   std::map<Exits, std::string> room_chars;
 
 public:
+  Inventory inventory;
+
   Player(int x) : Creature("player", 10, Dice(6, 2), Dice(6, 2)),
 		  position({{x, 0}}) {
     // Create the player's map
@@ -34,7 +37,7 @@ public:
     std::fill(map.data(),
 	      map.data()+map.num_elements(),
 	      Exits(0,0,0,0));
-}
+  }
 
   Coords getPosition() { return position; }
 
