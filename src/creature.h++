@@ -32,8 +32,8 @@ public:
   // setters
   void kill() { alive = false; } // mark the creature as dead
 
-  void takeDamage(int damage);	 // lower hp
-  void heal(int healing);	 // raise hp (upto maxhp)
+  int takeDamage(int damage);	 // lower hp
+  int heal(int healing);	 // raise hp (upto maxhp)
 
   // interactions
   void attack(Creature& target); // attack an target

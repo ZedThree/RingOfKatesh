@@ -20,9 +20,12 @@ void Creature::attack(Creature& target) {
   int damage = attack_result - defence_result;
   if (damage > 0) {
     std::cout << "A hit!\n";
+    damage = target.takeDamage(damage);
+  }
+  if (damage > 0) {
     std::cout << "The " << this->getName() << " does " << damage << " hp of damage to the "
 	      << target.getName() << "\n\n";
-    target.takeDamage(damage);
+
   } else {
     std::cout << "A miss!\n\n";
   }
@@ -34,21 +37,23 @@ int Creature::defend() {
 }
 
 // Deal damage to the creature
-void Creature::takeDamage(int damage) {
+// Return actual damage dealt
+int Creature::takeDamage(int damage) {
   hp -= damage;
   if (hp <= 0) {
     alive = false;
     // kill();
   }
+  return damage;
 }
 
 // Heal the creature, up to maxhp
-void Creature::heal(int healing) {
+// Returns actual amount healed
+int Creature::heal(int healing) {
   hp += healing;
   if (hp > maxhp) {
-    // healing -= hp-maxhp;
+    healing -= hp-maxhp;
     hp = maxhp;
   }
-  // Return actual amount healed!
-  // return healing;
+  return healing;
 }
