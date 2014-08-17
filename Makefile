@@ -13,6 +13,7 @@ SRC_EXT = c++
 
 FILES = dice.c++\
 	item.c++\
+	inventory.c++\
 	exits.c++\
 	dungeon.c++\
 	creature.c++\
