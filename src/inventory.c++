@@ -2,17 +2,16 @@
 
 // Given an instance of an item, find another one in inventory
 // Returns nullptr if none found
-ItemIterator Inventory::findItemIterator(Item item_want) {
+// ItemIterator Inventory::findItemIterator(Item* item_want) {
 
-  ItemIterator item_found = std::find(item_list.begin(),
-				      item_list.end(),
-				      item_want);
+//   ItemIterator item_found = std::find(item_list.begin(),
+// 				      item_list.end(),
+// 				      item_want);
 
-  return item_found;
-}
+//   return item_found;
+// }
 
 // Given the name of an item, find it in inventory
-// Returns nullptr if none found
 ItemIterator Inventory::findItemIterator(std::string item_name) {
 
   ItemIterator item_found = std::find(item_list.begin(),
@@ -26,9 +25,9 @@ ItemIterator Inventory::findItemIterator(std::string item_name) {
 // Returns nullptr if none found
 Item* Inventory::findItem(Item item_want) {
 
-  ItemIterator item_found = findItemIterator(item_want);
+  ItemIterator item_found = findItemIterator(item_want.getName());
 
-  return item_found != item_list.end() ? &(*item_found) : nullptr;
+  return item_found != item_list.end() ? *item_found : nullptr;
 }
 
 // Given the name of an item, find it in inventory
@@ -37,13 +36,13 @@ Item* Inventory::findItem(std::string item_name) {
 
   ItemIterator item_found = findItemIterator(item_name);
 
-  return item_found != item_list.end() ? &(*item_found) : nullptr;
+  return item_found != item_list.end() ? *item_found : nullptr;
 }
 
 // Add num_items of item to inventory
-int Inventory::addItem(Item item, int num_items) {
+int Inventory::addItem(Item* item, int num_items) {
 
-  Item* item_old = findItem(item);
+  Item* item_old = findItem(*item);
 
   if (item_old) {
     // If the item is already in the inventory, then increase its count
@@ -56,21 +55,21 @@ int Inventory::addItem(Item item, int num_items) {
 }
 
 // Add item to inventory
-int Inventory::addItem(Item item) {
+int Inventory::addItem(Item* item) {
 
-  int num_items = addItem(item, item.getNumber());
+  int num_items = addItem(item, item->getNumber());
   return num_items;
 
 }
 
 int Inventory::removeItem(Item item, int num_items) {
 
-  ItemIterator item_old = findItemIterator(item);
+  ItemIterator item_old = findItemIterator(item.getName());
 
   if (item_old != item_list.end()) {
     // If the item is already in the inventory, then increase its count
-    num_items = item_old->removeItem(num_items);
-    if (item_old->getNumber() <= 0) {
+    num_items = (*item_old)->removeItem(num_items);
+    if ((*item_old)->getNumber() <= 0) {
       item_list.erase(item_old);
     }
   } else {
@@ -95,7 +94,7 @@ int Inventory::getNumItems(std::string item_name) {
 void Inventory::printInventory() {
 
   for (auto item = item_list.begin(); item != item_list.end(); ++item) {
-    std::cout << item->getName() << ": " << item->getNumber() << std::endl;
+    std::cout << (*item)->getName() << ": " << (*item)->getNumber() << std::endl;
   }
 
 }

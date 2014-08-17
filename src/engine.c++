@@ -2,7 +2,7 @@
 
 void Engine::start() {
 
-  Potion potion(5);
+  Potion* potion = new Potion(5);
 
   player.inventory.addItem(potion);
 

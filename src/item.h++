@@ -9,7 +9,7 @@ class Creature;
 class Item;
 
 // List of item names
-typedef std::vector<Item> ItemList;
+typedef std::vector<Item*> ItemList;
 // Iterator over item_list
 typedef ItemList::iterator ItemIterator;
 
@@ -100,16 +100,16 @@ inline bool operator>=(const Item& lhs, const Item& rhs) {
 };
 
 // Comparison with string
-inline bool operator==(const Item& lhs, const std::string rhs) {
-  return (lhs.getName() == rhs);
+inline bool operator==(const Item* lhs, const std::string rhs) {
+  return (lhs->getName() == rhs);
 }
 
-inline bool operator!=(const Item& lhs, const std::string rhs) {
+inline bool operator!=(const Item* lhs, const std::string rhs) {
   return !operator==(lhs,rhs);
 }
 
 // Return true if item is empty
 // Used for std::algorithms that need unary predicates
-bool isEmpty(const Item& item);
+bool isEmpty(const Item* item);
 
 #endif
