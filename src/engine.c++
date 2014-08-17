@@ -2,6 +2,10 @@
 
 void Engine::start() {
 
+  Potion potion(5);
+
+  player.inventory.addItem(potion);
+
   // start in the first room of the map
 
   std::cout << "\nYour start health: " << player.getHp() << "\n\n";
@@ -74,18 +78,16 @@ void Engine::playerTurn() {
 
     } else if (choice == "potion") {
 
+      Item* potion = player.inventory.findItem("Potion");
+
       if (potion) {
-	std::cout << "You use a potion (you have "
-		  << potion->getNumber()-1 << " left)\n";
-	potion->use(player);
-	if (potion->getNumber() <= 0) {
-	  delete potion;
-	  potion = nullptr;
-	}
-	std::cout << "Your health: " << player.getHp() << std::endl;
-	moves = false;
+      	std::cout << "You use a potion (you have "
+      		  << potion->getNumber()-1 << " left)\n";
+      	potion->use(player);
+      	std::cout << "Your health: " << player.getHp() << std::endl;
+      	moves = false;
       } else {
-	std::cout << "Sorry, you have no more potions!\n";
+      	std::cout << "Sorry, you have no more potions!\n";
       }
 
     } else if (choice == "north" || choice == "n" ||
@@ -129,7 +131,7 @@ void Engine::playerTurn() {
 
     } else if (choice == "inventory" || choice == "i") {
 
-      // player.printInventory();
+      player.printInventory();
 
     } else if (choice == "help" || choice == "h") {
 
@@ -141,6 +143,9 @@ void Engine::playerTurn() {
 
     }
   } while (moves);
+
+  // Remove used items
+  player.inventory.cleanupInventory();
 
 }
 

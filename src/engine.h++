@@ -20,7 +20,7 @@ private:
   bool running;
   Dungeon dungeon;
   Player player;
-  Potion* potion = new Potion(1);
+  // Potion* potion = new Potion(1);
   Room* room;
 
 public:

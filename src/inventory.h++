@@ -9,22 +9,23 @@
 
 class Inventory {
 private:
-  // Map of item names and number of items
-  typedef std::vector<Item> ItemList;
-
   // Actual list of items in inventory
   ItemList item_list;
 
+  // Find item in inventory, return ItemIterator to it
+  // Only internal functions need these, to manipulate item_list vector
+  // External functions will want the actual item
+  ItemIterator findItemIterator(Item item_want);
+  ItemIterator findItemIterator(std::string item_name);
+
 public:
-  // Iterator over item_list
-  typedef ItemList::iterator ItemIterator;
 
   Inventory() {};
   ~Inventory() {};
 
   // Find item in inventory, return pointer to it
-  ItemIterator findItem(Item item_want);
-  ItemIterator findItem(std::string item_name);
+  Item* findItem(Item item_want);
+  Item* findItem(std::string item_name);
 
   // Inventory manipulation funcs return number of items
   // actually added/removed
@@ -37,7 +38,11 @@ public:
   // Return how many of item_name are in inventory
   int getNumItems(std::string item_name);
 
+  // Print what items, and how many of them, are in inventory
   void printInventory();
+
+  // Remove any items with count<=0
+  void cleanupInventory();
 
 };
 
