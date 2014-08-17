@@ -1,0 +1,27 @@
+
+* TODO Inventory
+- [X] items need equality operator
+  - hash? or name?
+  - Currently using name, but should switch to hash of item name+stats
+- [X] items need addition operator
+** picking up items:
+   - player picks up item:
+     - if inventory contains item already, increase count and destroy
+       item on ground
+     - otherwise just move the item from ground to inventory
+       (std::move?)
+   - player drops item:
+     - if count > 1, decrease count, clone item (with count = 1) on
+       ground
+     - otherwise, move item from inventory to ground
+** item weight?
+
+* TODO Weapons
+
+* TODO More stats
+
+* TODO XP and levels
+
+* TODO Multiple dungeons
+
+* TODO End goal: Ring of Katesh
