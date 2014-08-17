@@ -19,3 +19,9 @@ int Item::removeItem(int num) {
   }
   return num;
 }
+
+// Return true if item is empty
+// Used for std::algorithms that need unary predicates
+bool isEmpty(const Item& item) {
+  return item.getNumber() <= 0;
+}

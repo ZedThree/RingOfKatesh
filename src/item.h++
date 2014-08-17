@@ -1,8 +1,17 @@
 #ifndef ITEM_H
 #define ITEM_H
 
-#include <string>
 #include <iostream>
+#include <string>
+#include <vector>
+
+class Creature;
+class Item;
+
+// List of item names
+typedef std::vector<Item> ItemList;
+// Iterator over item_list
+typedef ItemList::iterator ItemIterator;
 
 class Item {
 private:
@@ -22,10 +31,12 @@ public:
   virtual ~Item() {}
 
   // getters
-  std::string getName() { return name; }
+  std::string getName()	      { return name; }
   std::string getName() const { return name; }
-  std::string getDescription() { return description; }
-  int getNumber() { return count; }
+  std::string getDescription()	     { return description; }
+  std::string getDescription() const { return description; }
+  int getNumber()	{ return count; }
+  int getNumber() const	{ return count; }
 
   // setters
   int addItem(int num);		// Add item to stack
@@ -34,6 +45,9 @@ public:
   // interactions
   virtual void use() {
     std::cout << "You cannot use this item\n";
+  }
+  virtual void use(Creature& creature) {
+    std::cout << "You cannot use this item like that\n";
   }
 
   // Arithmetic operators
@@ -94,6 +108,8 @@ inline bool operator!=(const Item& lhs, const std::string rhs) {
   return !operator==(lhs,rhs);
 }
 
-
+// Return true if item is empty
+// Used for std::algorithms that need unary predicates
+bool isEmpty(const Item& item);
 
 #endif
