@@ -11,6 +11,8 @@ private:
   int count;			// Number of items in stack
   int max_count;		// Max items in stack
 
+  //
+
   Item() {}			// no default item
 
 public:
@@ -21,6 +23,7 @@ public:
 
   // getters
   std::string getName() { return name; }
+  std::string getName() const { return name; }
   std::string getDescription() { return description; }
   int getNumber() { return count; }
 
@@ -32,6 +35,65 @@ public:
   virtual void use() {
     std::cout << "You cannot use this item\n";
   }
+
+  // Arithmetic operators
+  Item& operator+=(const Item& rhs) {
+    addItem(rhs.count);
+    return *this;
+  }
+
+  Item& operator-=(const Item& rhs) {
+    removeItem(rhs.count);
+    return *this;
+  }
+
 };
+
+// Arithmetic operators
+inline Item operator+(Item lhs, const Item& rhs) {
+  lhs += rhs;
+  return lhs;
+}
+
+inline Item operator-(Item lhs, const Item& rhs) {
+  lhs -= rhs;
+  return lhs;
+}
+
+// Comparison operators
+inline bool operator==(const Item& lhs, const Item& rhs) {
+  return (lhs.getName() == rhs.getName());
+}
+
+inline bool operator!=(const Item& lhs, const Item& rhs) {
+  return !operator==(lhs,rhs);
+}
+
+inline bool operator< (const Item& lhs, const Item& rhs) {
+  return (lhs.getName() < rhs.getName());
+};
+
+inline bool operator> (const Item& lhs, const Item& rhs) {
+  return operator<(rhs, lhs);
+};
+
+inline bool operator<=(const Item& lhs, const Item& rhs) {
+  return !operator>(rhs, lhs);
+};
+
+inline bool operator>=(const Item& lhs, const Item& rhs) {
+  return !operator<(rhs, lhs);
+};
+
+// Comparison with string
+inline bool operator==(const Item& lhs, const std::string rhs) {
+  return (lhs.getName() == rhs);
+}
+
+inline bool operator!=(const Item& lhs, const std::string rhs) {
+  return !operator==(lhs,rhs);
+}
+
+
 
 #endif
