@@ -3,8 +3,10 @@
 void Engine::start() {
 
   Potion* potion = new Potion(5);
+  Poison* poison = new Poison(2);
 
   player.inventory.addItem(potion);
+  player.inventory.addItem(poison);
 
   // start in the first room of the map
 
@@ -88,6 +90,20 @@ void Engine::playerTurn() {
       	moves = false;
       } else {
       	std::cout << "Sorry, you have no more potions!\n";
+      }
+
+    } else if (choice == "poison") {
+
+      Item* poison = player.inventory.findItem("Poison");
+
+      if (poison) {
+      	std::cout << "You use a poison (you have "
+      		  << poison->getNumber()-1 << " left)\n";
+      	poison->use(player);
+      	std::cout << "Your health: " << player.getHp() << std::endl;
+      	moves = false;
+      } else {
+      	std::cout << "Sorry, you have no more poisons!\n";
       }
 
     } else if (choice == "north" || choice == "n" ||

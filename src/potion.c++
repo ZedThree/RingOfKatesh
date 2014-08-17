@@ -8,3 +8,9 @@ void Potion::use(Creature& creature) {
   std::cout << "The " << creature.getName() << " heals " << healed << "hp\n";
   removeItem(1);
 }
+
+void Poison::use(Creature& creature) {
+  int hurt = creature.takeDamage(damage);
+  std::cout << "The " << creature.getName() << " is hurt " << hurt << "hp!\n";
+  removeItem(1);
+}

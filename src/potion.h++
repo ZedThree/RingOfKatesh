@@ -16,4 +16,14 @@ public:
 
 };
 
+class Poison : public Item {
+private:
+  const int damage = 5;
+
+public:
+  Poison(int num) : Item("Poison", "A vile poison!", num) {}
+  virtual ~Poison() {}
+  void use(Creature& creature);
+};
+
 #endif
